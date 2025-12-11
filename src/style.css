@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Custom scrollbar for sidebar */
+  .sidebar-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .sidebar-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .sidebar-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+  }
+
+  .sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+@layer components {
+  /* Sidebar components */
+  .sidebar {
+    @apply bg-sidebar text-sidebar;
+  }
+
+  .sidebar-item {
+    @apply flex items-center gap-3 px-4 py-3 text-sidebar hover:text-sidebar-hover hover:bg-sidebar-hover transition-colors relative cursor-pointer;
+  }
+
+  .sidebar-item.active {
+    @apply bg-sidebar-item text-sidebar-item;
+  }
+
+  .sidebar-profile {
+    @apply bg-sidebar-hover text-white;
+  }
+
+  .sidebar-profile-initials {
+    @apply bg-white/20 text-white;
+  }
+
+  /* Card components */
+  .card {
+    @apply bg-white rounded-xl border border-neutral-200 shadow-sm p-6;
+  }
+
+  /* Button components */
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-700 focus:ring-primary;
+  }
+
+  .btn-secondary {
+    @apply bg-neutral-100 text-neutral-700 hover:bg-neutral-200 focus:ring-neutral-500;
+  }
+
+  .btn-success {
+    @apply bg-success text-white hover:bg-success-dark focus:ring-success;
+  }
+
+  .btn-warning {
+    @apply bg-warning text-white hover:bg-warning-dark focus:ring-warning;
+  }
+
+  .btn-error {
+    @apply bg-error text-white hover:bg-error-dark focus:ring-error;
+  }
+
+  /* Form components */
+  .input-field {
+    @apply w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-colors;
+  }
+
+  .select-field {
+    @apply input-field appearance-none bg-white;
+  }
+
+  .checkbox-field {
+    @apply w-4 h-4 text-primary rounded border-neutral-300 focus:ring-primary focus:ring-2;
+  }
+
+  .radio-field {
+    @apply w-4 h-4 text-primary border-neutral-300 focus:ring-primary focus:ring-2;
+  }
+
+  /* Dialog/Modal */
+  .dialog-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50;
+  }
+
+  .dialog-container {
+    @apply bg-white rounded-2xl shadow-xl w-full max-w-2xl;
+  }
+
+  .dialog-header {
+    @apply flex items-center justify-between p-6 border-b border-neutral-200;
+  }
+
+  .dialog-body {
+    @apply p-6;
+  }
+
+  .dialog-footer {
+    @apply flex items-center justify-end gap-3 p-6 border-t border-neutral-200 bg-neutral-50 rounded-b-2xl;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply bg-primary-100 text-primary-800;
+  }
+
+  .badge-success {
+    @apply bg-success-light text-success-dark;
+  }
+
+  .badge-warning {
+    @apply bg-warning-light text-warning-dark;
+  }
+
+  .badge-error {
+    @apply bg-error-light text-error-dark;
+  }
+
+  /* Alert */
+  .alert {
+    @apply p-4 rounded-lg border;
+  }
+
+  .alert-success {
+    @apply bg-success-light border-success text-success-dark;
+  }
+
+  .alert-warning {
+    @apply bg-warning-light border-warning text-warning-dark;
+  }
+
+  .alert-error {
+    @apply bg-error-light border-error text-error-dark;
+  }
+  
+   /* Disabled States */
+  .disabled-field {
+    @apply bg-gray-50 border-gray-200 text-gray-400 cursor-not-allowed;
+  }
+
+  .disabled-field:focus {
+    @apply ring-0 border-gray-200 shadow-none;
+  }
+
+  .disabled-field::placeholder {
+    @apply text-gray-300;
+  }
+
+  .disabled-select {
+    @apply bg-gray-50 border-gray-200 text-gray-400 cursor-not-allowed;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239CA3AF' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+  }
+
+  .disabled-checkbox {
+    @apply bg-gray-100 border-gray-300 text-gray-300 cursor-not-allowed;
+  }
+
+  .disabled-checkbox:checked {
+    @apply bg-gray-300 border-gray-300;
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  }
+
+  .disabled-checkbox:focus {
+    @apply ring-0 border-gray-300;
+  }
+
+  .disabled-radio {
+    @apply bg-gray-100 border-gray-300 cursor-not-allowed;
+  }
+
+  .disabled-radio:checked {
+    @apply bg-gray-300 border-gray-300;
+  }
+
+  .disabled-radio:focus {
+    @apply ring-0 border-gray-300;
+  }
+
+  .disabled-label {
+    @apply cursor-not-allowed;
+  }
+
+  /* Disabled button */
+  .btn-disabled {
+    @apply bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed hover:bg-gray-100 hover:text-gray-400;
+  }
+
+  .btn-disabled:focus {
+    @apply ring-0 shadow-none;
+  }
+
+  /* Badge for disabled state */
+  .badge-disabled {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-500;
+  }
+
+  /* Textarea disabled state */
+  textarea.disabled-field {
+    @apply resize-none;
+  }
+
+  /* Readonly state (similar to disabled but with normal cursor) */
+  .readonly-field {
+    @apply bg-gray-50 border-gray-200 text-gray-600;
+  }
+
+  .readonly-field:focus {
+    @apply ring-0 border-gray-200;
+  }
+}
