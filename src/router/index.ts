@@ -13,7 +13,7 @@ const routes: RouteRecordRaw[] = [
     path: '/dashboard',
     name: 'Dashboard',
     component: DashboardPage,
-    meta: { 
+    meta: {
       requiresAuth: true,
       adminOnly: true // Optional: add admin-only protection
     }
@@ -39,9 +39,9 @@ router.beforeEach((to, from, next) => {
   // Get authentication status from localStorage
   const token = localStorage.getItem('admin_token')
   const user = localStorage.getItem('admin_user')
-  
+
   const isAuthenticated = Boolean(token)
-  
+
   // Check if user is admin (if needed)
   let isAdmin = false
   if (user) {
@@ -81,14 +81,14 @@ router.beforeEach((to, from, next) => {
 // Optional: Clear sensitive data on page refresh if not "Remember Me"
 router.beforeResolve((to, from, next) => {
   const rememberedEmail = localStorage.getItem('remembered_admin_email')
-  
+
   // If no remembered email exists and user closes/reopens browser,
   // we should clear the token (handled by browser closing event in LoginPage)
   // This is just an additional check
   if (!rememberedEmail && !to.meta.requiresGuest) {
     // Could add logic to check token expiration here
   }
-  
+
   next()
 })
 

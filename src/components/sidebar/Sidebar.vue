@@ -8,16 +8,10 @@
     <!-- Collapse/Expand Button -->
     <button
       @click="toggleSidebar"
-      class="absolute -right-3 top-8 z-10 rounded-full border border-neutral-200 bg-white shadow-sm transition-shadow hover:shadow-md w-8 h-8"
+      class="absolute -right-3 top-8 z-10 h-8 w-8 rounded-full border border-neutral-200 bg-white shadow-sm transition-shadow hover:shadow-md"
     >
-      <SvgIcon
-        v-if="isCollapsed"
-        size="24"
-        name="expand" class="text-neutral-600" />
-      <SvgIcon
-        v-else
-        size="24"
-        name="collapse" class="text-neutral-600" />
+      <SvgIcon v-if="isCollapsed" size="24" name="expand" class="text-neutral-600" />
+      <SvgIcon v-else size="24" name="collapse" class="text-neutral-600" />
     </button>
 
     <!-- Logo/Title Area -->
@@ -52,19 +46,22 @@
           v-if="item.name === 'Customer Management'"
           size="24"
           name="people"
-          class="h-5 w-5 flex-shrink-0" />
+          class="h-5 w-5 flex-shrink-0"
+        />
 
         <!-- Business Management Icon -->
         <SvgIcon
           v-else-if="item.name === 'Business Management'"
           size="24"
-          name="briefcase" class="h-5 w-5 flex-shrink-0" />
+          name="briefcase"
+          class="h-5 w-5 flex-shrink-0"
+        />
         <!-- Support Icon -->
         <SvgIcon
           v-else-if="item.name === 'Support'"
           name="lifeguard"
           size="24"
-          class="h-5 w-5 flex-shrink-0"          
+          class="h-5 w-5 flex-shrink-0"
         />
         <!-- Partners Icon -->
         <SvgIcon
@@ -81,11 +78,7 @@
           size="24"
         />
         <!-- Reports Icon -->
-        <SvgIcon
-          v-else-if="item.name === 'Reports'"
-          class="h-5 w-5 flex-shrink-0"
-          name="report"
-        />
+        <SvgIcon v-else-if="item.name === 'Reports'" class="h-5 w-5 flex-shrink-0" name="report" />
         <!-- Payments Icon -->
         <SvgIcon
           v-else-if="item.name === 'Payments'"
@@ -100,17 +93,9 @@
         />
 
         <!-- Reviews Icon -->
-        <SvgIcon
-          name="star"
-          v-else-if="item.name === 'Reviews'"
-          class="h-5 w-5 flex-shrink-0"
-        />
+        <SvgIcon name="star" v-else-if="item.name === 'Reviews'" class="h-5 w-5 flex-shrink-0" />
         <!-- Default Icon -->
-        <SvgIcon
-          v-else
-          name="home"
-          class="h-5 w-5 flex-shrink-0"
-        />
+        <SvgIcon v-else name="home" class="h-5 w-5 flex-shrink-0" />
 
         <span v-if="!isCollapsed" class="transition-opacity duration-200">
           {{ item.name }}
@@ -158,7 +143,6 @@
     { id: 8, name: 'Settings', active: activeNavItem.value === 8 },
     { id: 9, name: 'Reviews', active: activeNavItem.value === 9 }
   ])
-
 </script>
 
 <style scoped>

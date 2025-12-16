@@ -1,6 +1,5 @@
 <template>
   <AuthLayout>
-
     <!-- Page content -->
     <template #default>
       <header class="mb-8">
@@ -37,7 +36,7 @@
 
     <!-- Dialogs -->
     <template #dialogs>
-      <SupportDialog :open="showDialog" @close="showDialog = false" />
+      <SupportDialog :open="showDialog" @close="(showDialog = false)" />
     </template>
 
     <!-- Floating Buttons -->
@@ -49,26 +48,25 @@
         <SvgIcon name="plus" class="h-6 w-6" />
       </button>
     </template>
-
   </AuthLayout>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import AuthLayout from '@/components/layouts/AuthLayout.vue'
-import SearchInput from '@/components/SearchInput.vue'
-import CheckboxGroup from '@/components/CheckboxGroup.vue'
-import PartnerList from '@/components/PartnerList.vue'
-import BusinessList from '@/components/BusinessList.vue'
-import FormDemo from '@/components/FormDemo.vue'
-import SupportDialog from '@/components/SupportDialog.vue'
-import Heading from '@/components/Heading.vue'
-import ApiTest from '@/components/ApiTest.vue'
-import SvgIcon from '@/components/SvgIcon/SvgIcon.vue'
+  import { ref } from 'vue'
+  import AuthLayout from '@/components/layouts/AuthLayout.vue'
+  import SearchInput from '@/components/SearchInput.vue'
+  import CheckboxGroup from '@/components/CheckboxGroup.vue'
+  import PartnerList from '@/components/PartnerList.vue'
+  import BusinessList from '@/components/BusinessList.vue'
+  import FormDemo from '@/components/FormDemo.vue'
+  import SupportDialog from '@/components/SupportDialog.vue'
+  import Heading from '@/components/Heading.vue'
+  import ApiTest from '@/components/ApiTest.vue'
+  import SvgIcon from '@/components/SvgIcon/SvgIcon.vue'
 
-const showDialog = ref(false)
+  const showDialog = ref(false)
 
-const showSupportDialog = () => {
-  showDialog.value = true
-}
+  const showSupportDialog = () => {
+    showDialog.value = true
+  }
 </script>

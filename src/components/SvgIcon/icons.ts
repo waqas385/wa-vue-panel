@@ -37,7 +37,7 @@ export const icons = {
   search: Search,
   cross: Cross,
   lock: Lock,
-  plus: Plus,
+  plus: Plus
 } as const
 
 export type IconName = keyof typeof icons

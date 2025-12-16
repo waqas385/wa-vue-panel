@@ -2,12 +2,12 @@
   <teleport to="body">
     <div
       v-if="open"
-      class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
     >
       <!-- Dialog container -->
       <div
         ref="dialogRef"
-        class="w-full max-w-2xl max-h-[90vh] bg-white rounded-2xl shadow-xl flex flex-col"
+        class="flex max-h-[90vh] w-full max-w-2xl flex-col rounded-2xl bg-white shadow-xl"
       >
         <!-- Header -->
         <div class="flex items-center justify-between border-b border-gray-200 p-6">
@@ -18,7 +18,7 @@
         </div>
 
         <!-- Body -->
-        <div class="p-6 overflow-y-auto">
+        <div class="overflow-y-auto p-6">
           <slot />
         </div>
 
@@ -32,26 +32,25 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import SvgIcon from '@/components/SvgIcon/SvgIcon.vue'
-import { useClickOutside } from '@/composables/useClickOutside'
-import { useEscapeKey } from '@/composables/useEscapeKey'
+  import { ref } from 'vue'
+  import SvgIcon from '@/components/SvgIcon/SvgIcon.vue'
+  import { useClickOutside } from '@/composables/useClickOutside'
+  import { useEscapeKey } from '@/composables/useEscapeKey'
 
-const props = defineProps<{ open: boolean }>()
-const emit = defineEmits(['close'])
+  const props = defineProps<{ open: boolean }>()
+  const emit = defineEmits(['close'])
 
-function close() {
-  emit('close')
-}
+  function close() {
+    emit('close')
+  }
 
-const dialogRef = ref<HTMLElement | null>(null)
+  const dialogRef = ref<HTMLElement | null>(null)
 
+  useClickOutside(dialogRef, () => {
+    if (props.open) close()
+  })
 
-useClickOutside(dialogRef, () => {
-  if (props.open) close()
-})
-
-useEscapeKey(() => {
-  if (props.open) close()
-})
+  useEscapeKey(() => {
+    if (props.open) close()
+  })
 </script>

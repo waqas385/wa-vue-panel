@@ -6,9 +6,9 @@
 </template>
 
 <script setup lang="ts">
-// App.vue usually has no logic except global wrappers/layouts
+  // App.vue usually has no logic except global wrappers/layouts
 </script>
 
 <style>
-/* global styles */
+  /* global styles */
 </style>
