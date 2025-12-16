@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import SvgIcon from './SvgIcon/SvgIcon.vue';
+  import SvgIcon from '@/components/svgicon/SvgIcon.vue';
 
   const searchQuery = ref('')
 </script>

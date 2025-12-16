@@ -15,6 +15,8 @@ import Help from '@/assets/icons/help.svg'
 import Out from '@/assets/icons/out.svg'
 import Search from '@/assets/icons/search.svg'
 import Cross from '@/assets/icons/cross.svg'
+import Lock from '@/assets/icons/lock.svg'
+import Plus from '@/assets/icons/plus.svg'
 
 export const icons = {
   expand: Expand,
@@ -33,7 +35,9 @@ export const icons = {
   help: Help,
   out: Out,
   search: Search,
-  cross: Cross
+  cross: Cross,
+  lock: Lock,
+  plus: Plus,
 } as const
 
 export type IconName = keyof typeof icons

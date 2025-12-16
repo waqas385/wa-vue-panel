@@ -1,23 +1,17 @@
 <template>
-  <div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
-    <div class="w-full max-w-2xl rounded-2xl bg-white shadow-xl">
-      <!-- Header -->
-      <div class="flex items-center justify-between border-b border-gray-200 p-6">
-        <div>
-          <h2 class="text-xl font-bold text-gray-900">Support Ticket</h2>
-          <p class="mt-1 text-gray-600">Create a new support request</p>
-        </div>
-        <button @click="$emit('close')" class="text-gray-400 transition-colors hover:text-gray-600">
-          <SvgIcon
-            name="cross"
-            class="h-6 w-6"
-          />
-        </button>
-      </div>
+  <Dialog :open="open" @close="emit('close')">
 
-      <!-- Form -->
-      <div class="p-6">
-        <div class="space-y-6">
+    <!-- Header -->
+    <template #header>
+      <div>
+        <h2 class="text-xl font-bold text-gray-900">Support Ticket</h2>
+        <p class="mt-1 text-gray-600">Create a new support request</p>
+      </div>
+    </template>
+
+    <!-- Body -->
+    <div class="space-y-6">
+      <div class="space-y-6">
           <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div>
               <label class="mb-2 block text-sm font-medium text-gray-700">Name</label>
@@ -116,47 +110,43 @@
             </label>
           </div>
         </div>
-      </div>
-
-      <!-- Footer -->
-      <div
-        class="flex items-center justify-end gap-3 rounded-b-2xl border-t border-gray-200 bg-gray-50 p-6"
-      >
-        <button @click="$emit('close')" class="btn btn-secondary">Cancel</button>
-
-        <button
-          @click="submitTicket"
-          class="btn btn-primary"
-          :disabled="!form.terms"
-          :class="{ 'cursor-not-allowed opacity-50': !form.terms }"
-        >
-          Submit Ticket
-        </button>
-      </div>
     </div>
-  </div>
+
+    <!-- Footer -->
+    <template #footer>
+      <button @click="emit('close')" class="btn btn-secondary">Cancel</button>
+      <button
+        @click="submitTicket"
+        class="btn btn-primary"
+        :disabled="!form.terms"
+        :class="{ 'cursor-not-allowed opacity-50': !form.terms }"
+      >
+        Submit Ticket
+      </button>
+    </template>
+
+  </Dialog>
 </template>
 
 <script setup lang="ts">
-  import { reactive } from 'vue'
-  import SvgIcon from './SvgIcon/SvgIcon.vue'
+import { reactive } from 'vue'
+import Dialog from '@/components/ui/Dialog.vue'
 
-  const emit = defineEmits(['close'])
+const props = defineProps<{ open: boolean }>()
+const emit = defineEmits(['close'])
 
-  const form = reactive({
-    name: '',
-    email: '',
-    issueType: '',
-    priority: 'medium',
-    description: '',
-    terms: false
-  })
+const form = reactive({
+  name: '',
+  email: '',
+  issueType: '',
+  priority: 'medium',
+  description: '',
+  terms: false
+})
 
-  const submitTicket = () => {
-    if (!form.terms) return
-
-    console.log('Submitting support ticket:', form)
-    alert('Support ticket submitted successfully!')
-    emit('close')
-  }
+function submitTicket() {
+  if (!form.terms) return
+  console.log('Submitting support ticket:', form)
+  emit('close')
+}
 </script>
