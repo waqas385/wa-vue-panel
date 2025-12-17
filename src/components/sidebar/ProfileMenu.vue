@@ -68,12 +68,13 @@
     <ConfirmDialog
       :open="showConfirm"
       title="Confirm logout"
-      message="Are you sure you want to logout?"
       confirmText="Logout"
       cancelText="Cancel"
       @confirm="logout"
       @close="(showConfirm = false)"
-    />
+    >
+      <p>Are you sure you want to logout?</p>
+    </ConfirmDialog>
   </div>
 </template>
 

@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import SvgIcon from '@/components/SvgIcon/SvgIcon.vue'
+  import SvgIcon from '@/components/svgicon/SvgIcon.vue'
   import { useClickOutside } from '@/composables/useClickOutside'
   import { useEscapeKey } from '@/composables/useEscapeKey'
 

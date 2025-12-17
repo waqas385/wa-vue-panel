@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import LoginPage from '@/pages/LoginPage.vue'
 import DashboardPage from '@/pages/DashboardPage.vue'
+import CustomerManagementPage from '@/pages/CustomerManagementPage/CustomerManagementPage.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -21,6 +22,15 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     redirect: '/dashboard'
+  },
+  {
+    path: '/customers',
+    name: 'Customers',
+    component: CustomerManagementPage,
+    meta: {
+      requiresAuth: true,
+      adminOnly: true // Optional: add admin-only protection
+    }
   },
   // 404 page or redirect
   {

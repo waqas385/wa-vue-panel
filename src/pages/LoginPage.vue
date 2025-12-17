@@ -73,7 +73,6 @@
   import { ref, onMounted, computed } from 'vue'
   import { useRouter } from 'vue-router'
   import { useApi } from '@/composables/useApi'
-  import Loader from '@/components/ui/Loader.vue'
 
   const email = ref('')
   const password = ref('')
@@ -88,15 +87,6 @@
   })
   const rememberedEmail = computed(() => {
     return localStorage.getItem('remembered_admin_email')
-  })
-
-  const userData = computed(() => {
-    try {
-      const data = localStorage.getItem('admin_user')
-      return data ? JSON.parse(data) : null
-    } catch {
-      return null
-    }
   })
 
   // Function to validate token (check expiration)

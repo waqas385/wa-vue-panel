@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { SimpleApiService } from '@/services/ApiService'
-import type { ApiResponse, ApiError } from '@/types/api'
+import type { ApiError } from '@/types/api'
 
 // Global instance
 let apiInstance: SimpleApiService | null = null
@@ -79,34 +79,5 @@ export function usePost<T = any>(endpoint: string, body?: any, options?: any) {
     loading,
     error,
     execute
-  }
-}
-
-// Other methods (PUT, PATCH, DELETE) follow same pattern...
-
-// Simple auth composable
-export function useAuth() {
-  const api = useApi()
-
-  const login = async (email: string, password: string) => {
-    try {
-      const response = await api.post('/auth/login', { email, password })
-      if (response.data.token) {
-        api.setToken(response.data.token)
-      }
-      return response
-    } catch (error) {
-      throw error
-    }
-  }
-
-  const logout = () => {
-    api.clearToken()
-  }
-
-  return {
-    login,
-    logout,
-    getToken: () => api.getToken()
   }
 }

@@ -5,16 +5,13 @@
 
     <!-- Main Content -->
     <div class="overflow-auto">
-      <div class="p-8">
+      <div class="p-4">
         <slot />
       </div>
     </div>
 
     <!-- Global Dialogs -->
     <slot name="dialogs" />
-
-    <!-- Floating Buttons -->
-    <slot name="floating" />
   </div>
 </template>
 

@@ -17,6 +17,12 @@ import Search from '@/assets/icons/search.svg'
 import Cross from '@/assets/icons/cross.svg'
 import Lock from '@/assets/icons/lock.svg'
 import Plus from '@/assets/icons/plus.svg'
+import Dashboard from '@/assets/icons/dashboard.svg'
+import Menu from '@/assets/icons/menu.svg'
+import Delete from '@/assets/icons/delete.svg'
+import Eye from '@/assets/icons/eye.svg'
+import Edit from '@/assets/icons/edit.svg'
+import Loader from '@/assets/icons/loader.svg'
 
 export const icons = {
   expand: Expand,
@@ -37,7 +43,13 @@ export const icons = {
   search: Search,
   cross: Cross,
   lock: Lock,
-  plus: Plus
+  plus: Plus,
+  dashboard: Dashboard,
+  menu: Menu,
+  eye: Eye,
+  delete: Delete,
+  edit: Edit,
+  loader: Loader
 } as const
 
 export type IconName = keyof typeof icons

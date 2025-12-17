@@ -9,7 +9,10 @@
 
     <!-- Body -->
     <div class="leading-relaxed text-gray-700">
-      {{ message }}
+      <slot>
+        <!-- Optional fallback if no slot is provided -->
+        Are you sure you want to continue?
+      </slot>
     </div>
 
     <!-- Footer -->
@@ -31,7 +34,6 @@
   const props = defineProps<{
     open: boolean
     title?: string
-    message?: string
     confirmText?: string
     cancelText?: string
   }>()
