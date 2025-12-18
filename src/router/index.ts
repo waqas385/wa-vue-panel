@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import LoginPage from '@/pages/LoginPage.vue'
 import DashboardPage from '@/pages/DashboardPage.vue'
+import CustomerManagementPage from '@/pages/CustomerManagementPage/CustomerManagementPage.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -13,7 +14,7 @@ const routes: RouteRecordRaw[] = [
     path: '/dashboard',
     name: 'Dashboard',
     component: DashboardPage,
-    meta: { 
+    meta: {
       requiresAuth: true,
       adminOnly: true // Optional: add admin-only protection
     }
@@ -21,6 +22,20 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     redirect: '/dashboard'
+  },
+  {
+    path: '/customers',
+    name: 'Customers',
+    component: CustomerManagementPage,
+    meta: {
+      requiresAuth: true,
+      adminOnly: true // Optional: add admin-only protection
+    }
+  },
+  {
+    path: '/customers/:id/edit',
+    name: 'customer-edit',
+    component: () => import('@/pages/CustomerManagementPage/CustomerEdit.vue'),
   },
   // 404 page or redirect
   {
@@ -39,9 +54,9 @@ router.beforeEach((to, from, next) => {
   // Get authentication status from localStorage
   const token = localStorage.getItem('admin_token')
   const user = localStorage.getItem('admin_user')
-  
+
   const isAuthenticated = Boolean(token)
-  
+
   // Check if user is admin (if needed)
   let isAdmin = false
   if (user) {
@@ -81,14 +96,14 @@ router.beforeEach((to, from, next) => {
 // Optional: Clear sensitive data on page refresh if not "Remember Me"
 router.beforeResolve((to, from, next) => {
   const rememberedEmail = localStorage.getItem('remembered_admin_email')
-  
+
   // If no remembered email exists and user closes/reopens browser,
   // we should clear the token (handled by browser closing event in LoginPage)
   // This is just an additional check
   if (!rememberedEmail && !to.meta.requiresGuest) {
     // Could add logic to check token expiration here
   }
-  
+
   next()
 })
 

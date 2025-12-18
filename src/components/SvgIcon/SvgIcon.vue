@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { icons, type IconName } from './icons'
+  import { computed } from 'vue'
+  import { icons, type IconName } from './icons'
 
-interface Props {
-  name: IconName
-  size?: number | string
-  color?: string
-  stroke?: string
-  fill?: string
-}
+  interface Props {
+    name: IconName
+    size?: number | string
+    color?: string
+    stroke?: string
+    fill?: string
+  }
 
-const props = defineProps<Props>()
+  const props = defineProps<Props>()
 
-const normalizedSize = computed(() =>
-  typeof props.size === 'number' ? `${props.size}px` : props.size
-)
+  const normalizedSize = computed(() =>
+    typeof props.size === 'number' ? `${props.size}px` : props.size
+  )
 
-const IconComponent = computed(() => icons[props.name])
+  const IconComponent = computed(() => icons[props.name])
 </script>
 
 <template>
@@ -31,8 +31,8 @@ const IconComponent = computed(() => icons[props.name])
 </template>
 
 <style scoped>
-.svg-icon {
-  display: inline-block;
-  vertical-align: middle;
-}
+  .svg-icon {
+    display: inline-block;
+    vertical-align: middle;
+  }
 </style>
