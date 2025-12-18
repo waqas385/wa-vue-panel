@@ -20,6 +20,7 @@
           <CustomersList
             :search="search"
             @on-user-delete="showConfirmDialog"
+            @on-user-view="showViewUser"
             :refresh="refreshList"
           />
         </div>
@@ -41,6 +42,11 @@
           >?
         </p>
       </ConfirmDialog>
+      <CustomerView
+        :open="showViewUserDialog"
+        :customer="viewUser"
+        @close="(showViewUserDialog = false)"
+      ></CustomerView>
     </template>
   </AuthLayout>
 </template>
@@ -51,18 +57,26 @@
   import AuthLayout from '@/components/layouts/AuthLayout.vue'
   import SearchInput from '@/components/SearchInput.vue'
   import ConfirmDialog from '@/components/ui/ConfirmDialog.vue'
-  import CustomersList from './CustomersList.vue'
+  import CustomersList from './CustomerList.vue'
   import { Customer } from './types/interface'
+  import CustomerView from './CustomerView.vue'
 
   const api = useApi()
   const search = ref('')
   const deleteUser = ref<Customer | null>(null)
+  const viewUser = ref<Customer | null>(null)
   const showDeleteUserConfirm = ref(false)
+  const showViewUserDialog = ref(false)
   const refreshList = ref(0)
 
   const showConfirmDialog = (user: Customer) => {
     showDeleteUserConfirm.value = true
     deleteUser.value = user
+  }
+
+  const showViewUser = (user: Customer) => {
+    viewUser.value = user
+    showViewUserDialog.value = true
   }
 
   const onDeleteUser = async () => {

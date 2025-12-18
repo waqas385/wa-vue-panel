@@ -35,7 +35,7 @@
     refresh: number
   }>()
 
-  const emit = defineEmits(['onUserDelete'])
+  const emit = defineEmits(['onUserDelete', 'onUserView', 'onUserEdit'])
 
   let debounceTimer: any = null
   const api = useApi()
@@ -115,9 +115,7 @@
   }
 
   /* ✅ Action handlers */
-  const onView = (row: Customer) => console.log('View:', row)
-  const onEdit = (row: Customer) => console.log('Edit:', row)
-  const onDelete = (row: Customer) => {
-    emit('onUserDelete', row)
-  }
+  const onView = (row: Customer) => emit('onUserView', row)
+  const onEdit = (row: Customer) => emit('onUserEdit', row)
+  const onDelete = (row: Customer) => emit('onUserDelete', row)
 </script>
