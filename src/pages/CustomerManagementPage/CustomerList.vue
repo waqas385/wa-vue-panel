@@ -28,7 +28,7 @@
   import { ref, onMounted, watch } from 'vue'
   import DataTable from '@/components/datatable/DataTable.vue'
   import { useApi } from '@/composables/useApi'
-  import { Customer } from './types/interface'
+  import { Customer } from './types/customers'
 
   const props = defineProps<{
     search: string

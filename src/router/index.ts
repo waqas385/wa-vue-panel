@@ -32,6 +32,11 @@ const routes: RouteRecordRaw[] = [
       adminOnly: true // Optional: add admin-only protection
     }
   },
+  {
+    path: '/customers/:id/edit',
+    name: 'customer-edit',
+    component: () => import('@/pages/CustomerManagementPage/CustomerEdit.vue'),
+  },
   // 404 page or redirect
   {
     path: '/:pathMatch(.*)*',

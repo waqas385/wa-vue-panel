@@ -21,6 +21,7 @@
             :search="search"
             @on-user-delete="showConfirmDialog"
             @on-user-view="showViewUser"
+            @on-user-edit="editUser"
             :refresh="refreshList"
           />
         </div>
@@ -58,9 +59,11 @@
   import SearchInput from '@/components/SearchInput.vue'
   import ConfirmDialog from '@/components/ui/ConfirmDialog.vue'
   import CustomersList from './CustomerList.vue'
-  import { Customer } from './types/interface'
+  import { Customer } from './types/customers'
   import CustomerView from './CustomerView.vue'
+  import { useRouter } from 'vue-router'
 
+  const router = useRouter()
   const api = useApi()
   const search = ref('')
   const deleteUser = ref<Customer | null>(null)
@@ -90,5 +93,9 @@
     } finally {
       showDeleteUserConfirm.value = false
     }
+  }
+
+  const editUser = (user: Customer) => {
+    router.push('/customers/' + user.id + '/edit')
   }
 </script>

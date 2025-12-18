@@ -77,7 +77,7 @@
 
 <script setup lang="ts">
   import Dialog from '@/components/ui/Dialog.vue'
-  import { Customer, Gender } from './types/interface'
+  import { Customer, Gender } from './types/customers'
 
   const props = defineProps<{
     open: boolean
