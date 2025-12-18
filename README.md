@@ -55,6 +55,13 @@ That’s it.
 
 ---
 
-## API Service Documentation
+## API service documentation
 
 In this system we use custom API Service. [Read API service documentation](API_Service_README.md)
+
+
+---
+
+## DataTable component documentation
+
+In this system we use DataTable component for listing [read DataTable documentation](DataTable_README.md)

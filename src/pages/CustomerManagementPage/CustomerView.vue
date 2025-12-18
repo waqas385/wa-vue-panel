@@ -65,12 +65,7 @@
 
     <!-- Footer -->
     <template #footer>
-      <button
-        @click="emit('close')"
-        class="rounded-lg bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300"
-      >
-        Close
-      </button>
+      <button @click="emit('close')" class="btn btn-secondary">Close</button>
     </template>
   </Dialog>
 </template>
